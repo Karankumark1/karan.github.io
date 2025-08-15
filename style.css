@@ -1,6 +1,6 @@
 /* ========================================
-   DEMON PORTFOLIO CSS
-   Dark, gothic, demon-themed styling
+   LUCIFER MORNINGSTAR PORTFOLIO CSS
+   Sophisticated, celestial, devil-themed styling
 ======================================== */
 
 /* Import Gothic Fonts */
@@ -10,19 +10,21 @@
    ROOT VARIABLES
 ======================================== */
 :root {
-    --demon-black: #0a0a0a;
-    --demon-dark-red: #8b0000;
-    --demon-red: #dc143c;
-    --demon-blood-red: #ff0000;
-    --demon-orange: #ff4500;
-    --demon-gold: #ffd700;
-    --demon-dark-gray: #1a1a1a;
-    --demon-gray: #2d2d2d;
-    --demon-light-gray: #666;
-    --demon-white: #ffffff;
-    --demon-purple: #800080;
-    --demon-shadow: rgba(220, 20, 60, 0.3);
-    --demon-glow: rgba(255, 69, 0, 0.8);
+    --lucifer-black: #0a0a0a;
+    --lucifer-dark-red: #8b0000;
+    --lucifer-red: #dc143c;
+    --lucifer-blood-red: #cc0000;
+    --lucifer-gold: #ffd700;
+    --lucifer-bronze: #cd7f32;
+    --lucifer-dark-gray: #1a1a1a;
+    --lucifer-gray: #2d2d2d;
+    --lucifer-light-gray: #666;
+    --lucifer-white: #ffffff;
+    --lucifer-cream: #f5f5dc;
+    --lucifer-purple: #4a0e4e;
+    --lucifer-shadow: rgba(220, 20, 60, 0.3);
+    --lucifer-glow: rgba(255, 215, 0, 0.8);
+    --lucifer-fire: rgba(255, 69, 0, 0.9);
 }
 
 /* ========================================
@@ -39,9 +41,9 @@ html {
 }
 
 body {
-    font-family: 'Cinzel', serif;
-    background: linear-gradient(45deg, var(--demon-black), var(--demon-dark-gray));
-    color: var(--demon-white);
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(45deg, var(--lucifer-black), var(--lucifer-dark-gray));
+    color: var(--lucifer-white);
     overflow-x: hidden;
     position: relative;
 }
@@ -68,7 +70,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, var(--demon-black) 0%, var(--demon-dark-red) 100%);
+    background: radial-gradient(circle, var(--lucifer-black) 0%, var(--lucifer-dark-red) 70%, var(--lucifer-gold) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,37 +78,61 @@ body {
     transition: opacity 0.5s ease-out;
 }
 
-.demon-loader {
+.lucifer-loader {
     text-align: center;
 }
 
-.flame-loader {
-    width: 60px;
-    height: 60px;
+.pentagram-loader {
+    width: 80px;
+    height: 80px;
     margin: 0 auto 20px;
-    border: 4px solid var(--demon-dark-red);
-    border-top: 4px solid var(--demon-orange);
-    border-radius: 50%;
-    animation: demonSpin 1s linear infinite;
+    position: relative;
+    animation: luciferSpin 2s linear infinite;
+}
+
+.pentagram-loader::before {
+    content: '★';
+    font-size: 60px;
+    color: var(--lucifer-gold);
+    text-shadow: 0 0 30px var(--lucifer-glow);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pentagramGlow 1.5s ease-in-out infinite alternate;
 }
 
 .loading-text {
-    font-family: 'Nosifer', cursive;
-    color: var(--demon-orange);
-    font-size: 1.5rem;
-    text-shadow: 0 0 20px var(--demon-glow);
-    animation: flicker 2s infinite alternate;
+    font-family: 'Dancing Script', cursive;
+    color: var(--lucifer-gold);
+    font-size: 2rem;
+    text-shadow: 0 0 20px var(--lucifer-glow);
+    animation: luciferFlicker 2s infinite alternate;
+    margin-bottom: 10px;
 }
 
-@keyframes demonSpin {
+.loading-subtext {
+    font-family: 'Cinzel', serif;
+    color: var(--lucifer-cream);
+    font-size: 1rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+@keyframes luciferSpin {
     0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.1); }
+    50% { transform: rotate(180deg) scale(1.05); }
     100% { transform: rotate(360deg) scale(1); }
 }
 
-@keyframes flicker {
-    0% { opacity: 0.8; text-shadow: 0 0 20px var(--demon-glow); }
-    100% { opacity: 1; text-shadow: 0 0 30px var(--demon-glow), 0 0 40px var(--demon-orange); }
+@keyframes pentagramGlow {
+    0% { text-shadow: 0 0 20px var(--lucifer-glow); }
+    100% { text-shadow: 0 0 40px var(--lucifer-glow), 0 0 60px var(--lucifer-gold); }
+}
+
+@keyframes luciferFlicker {
+    0% { opacity: 0.9; text-shadow: 0 0 20px var(--lucifer-glow); }
+    100% { opacity: 1; text-shadow: 0 0 30px var(--lucifer-glow), 0 0 50px var(--lucifer-gold); }
 }
 
 /* ========================================
@@ -115,52 +141,54 @@ body {
 .demon-nav {
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--demon-dark-red);
+    border-bottom: 2px solid var(--lucifer-dark-red);
     transition: all 0.3s ease;
-    box-shadow: 0 2px 20px var(--demon-shadow);
+    box-shadow: 0 2px 20px var(--lucifer-shadow);
 }
 
-.demon-brand {
-    font-family: 'Creepster', cursive;
+.lucifer-brand {
+    font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
-    color: var(--demon-orange) !important;
+    color: var(--lucifer-gold) !important;
     text-decoration: none;
-    text-shadow: 0 0 10px var(--demon-glow);
+    text-shadow: 0 0 10px var(--lucifer-glow);
     transition: all 0.3s ease;
+    font-weight: 700;
 }
 
-.demon-brand:hover {
-    color: var(--demon-blood-red) !important;
-    text-shadow: 0 0 20px var(--demon-blood-red);
+.lucifer-brand:hover {
+    color: var(--lucifer-fire) !important;
+    text-shadow: 0 0 20px var(--lucifer-fire);
     transform: scale(1.05);
 }
 
-.demon-nav-link {
-    color: var(--demon-white) !important;
+.lucifer-nav-link {
+    color: var(--lucifer-white) !important;
     font-weight: 600;
     position: relative;
     margin: 0 10px;
     transition: all 0.3s ease;
+    font-family: 'Cinzel', serif;
 }
 
-.demon-nav-link::after {
+.lucifer-nav-link::after {
     content: '';
     position: absolute;
     bottom: -5px;
     left: 50%;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--demon-orange), var(--demon-red));
+    background: linear-gradient(90deg, var(--lucifer-gold), var(--lucifer-red));
     transform: translateX(-50%);
     transition: width 0.3s ease;
 }
 
-.demon-nav-link:hover {
-    color: var(--demon-orange) !important;
-    text-shadow: 0 0 10px var(--demon-glow);
+.lucifer-nav-link:hover {
+    color: var(--lucifer-gold) !important;
+    text-shadow: 0 0 10px var(--lucifer-glow);
 }
 
-.demon-nav-link:hover::after {
+.lucifer-nav-link:hover::after {
     width: 100%;
 }
 
@@ -203,79 +231,106 @@ body {
     100% { opacity: 1; transform: translateY(0); }
 }
 
-.demon-avatar {
+.lucifer-avatar {
     position: relative;
     display: inline-block;
     margin-bottom: 2rem;
 }
 
 .avatar-ring {
-    width: 150px;
-    height: 150px;
-    border: 3px solid var(--demon-orange);
+    width: 180px;
+    height: 180px;
+    border: 3px solid var(--lucifer-gold);
     border-radius: 50%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: ringRotate 3s linear infinite;
-    box-shadow: 0 0 30px var(--demon-glow), inset 0 0 30px var(--demon-shadow);
+    animation: luciferRingRotate 4s linear infinite;
+    box-shadow: 0 0 40px var(--lucifer-glow), inset 0 0 30px var(--lucifer-shadow);
 }
 
-.demon-icon {
-    font-size: 4rem;
-    color: var(--demon-orange);
-    text-shadow: 0 0 20px var(--demon-glow);
+.pentagram-symbol {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 2rem;
+    color: var(--lucifer-gold);
+    text-shadow: 0 0 20px var(--lucifer-glow);
+    animation: pentagramFloat 3s ease-in-out infinite;
+    z-index: 3;
+}
+
+.lucifer-icon {
+    font-size: 4.5rem;
+    color: var(--lucifer-gold);
+    text-shadow: 0 0 25px var(--lucifer-glow);
     position: relative;
     z-index: 2;
-    animation: iconPulse 2s ease-in-out infinite;
+    animation: luciferIconPulse 3s ease-in-out infinite;
 }
 
-@keyframes ringRotate {
+@keyframes luciferRingRotate {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-@keyframes iconPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+@keyframes pentagramFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(180deg); }
 }
 
-.demon-title {
-    font-family: 'Butcherman', cursive;
+@keyframes luciferIconPulse {
+    0%, 100% { transform: scale(1); text-shadow: 0 0 25px var(--lucifer-glow); }
+    50% { transform: scale(1.1); text-shadow: 0 0 40px var(--lucifer-glow), 0 0 60px var(--lucifer-gold); }
+}
+
+.lucifer-title {
+    font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
-    color: var(--demon-white);
-    text-shadow: 0 0 20px var(--demon-shadow);
+    color: var(--lucifer-white);
+    text-shadow: 0 0 20px var(--lucifer-shadow);
     margin-bottom: 1rem;
     letter-spacing: 3px;
+    font-weight: 700;
 }
 
-.demon-subtitle {
-    font-family: 'Metal Mania', cursive;
-    font-size: 2rem;
-    color: var(--demon-orange);
-    text-shadow: 0 0 15px var(--demon-glow);
+.lucifer-subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: var(--lucifer-gold);
+    text-shadow: 0 0 15px var(--lucifer-glow);
     margin-bottom: 1rem;
-    animation: subtitleGlow 3s ease-in-out infinite;
+    animation: luciferSubtitleGlow 3s ease-in-out infinite;
 }
 
-@keyframes subtitleGlow {
-    0%, 100% { text-shadow: 0 0 15px var(--demon-glow); }
-    50% { text-shadow: 0 0 25px var(--demon-glow), 0 0 35px var(--demon-orange); }
+@keyframes luciferSubtitleGlow {
+    0%, 100% { text-shadow: 0 0 15px var(--lucifer-glow); }
+    50% { text-shadow: 0 0 25px var(--lucifer-glow), 0 0 35px var(--lucifer-gold); }
 }
 
-.demon-description {
+.lucifer-description {
     font-size: 1.2rem;
-    color: var(--demon-light-gray);
+    color: var(--lucifer-cream);
+    margin-bottom: 1rem;
+    font-style: italic;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+}
+
+.lucifer-quote {
+    font-size: 1rem;
+    color: var(--lucifer-light-gray);
     margin-bottom: 2rem;
     font-style: italic;
+    font-family: 'Cinzel', serif;
 }
 
 .hero-buttons {
     margin-bottom: 2rem;
 }
 
-.demon-btn-primary, .demon-btn-secondary {
+.lucifer-btn-primary, .lucifer-btn-secondary {
     font-family: 'Cinzel', serif;
     font-weight: 600;
     padding: 12px 30px;
@@ -291,30 +346,30 @@ body {
     letter-spacing: 1px;
 }
 
-.demon-btn-primary {
-    background: linear-gradient(45deg, var(--demon-dark-red), var(--demon-red));
-    color: var(--demon-white);
-    border-color: var(--demon-red);
-    box-shadow: 0 5px 15px var(--demon-shadow);
+.lucifer-btn-primary {
+    background: linear-gradient(45deg, var(--lucifer-dark-red), var(--lucifer-red));
+    color: var(--lucifer-white);
+    border-color: var(--lucifer-gold);
+    box-shadow: 0 5px 15px var(--lucifer-shadow);
 }
 
-.demon-btn-primary:hover {
-    background: linear-gradient(45deg, var(--demon-red), var(--demon-orange));
-    color: var(--demon-white);
-    box-shadow: 0 8px 25px var(--demon-glow);
+.lucifer-btn-primary:hover {
+    background: linear-gradient(45deg, var(--lucifer-red), var(--lucifer-gold));
+    color: var(--lucifer-black);
+    box-shadow: 0 8px 25px var(--lucifer-glow);
     transform: translateY(-3px);
 }
 
-.demon-btn-secondary {
+.lucifer-btn-secondary {
     background: transparent;
-    color: var(--demon-orange);
-    border-color: var(--demon-orange);
+    color: var(--lucifer-gold);
+    border-color: var(--lucifer-gold);
 }
 
-.demon-btn-secondary:hover {
-    background: var(--demon-orange);
-    color: var(--demon-black);
-    box-shadow: 0 8px 25px var(--demon-glow);
+.lucifer-btn-secondary:hover {
+    background: var(--lucifer-gold);
+    color: var(--lucifer-black);
+    box-shadow: 0 8px 25px var(--lucifer-glow);
     transform: translateY(-3px);
 }
 
@@ -439,6 +494,58 @@ body {
     line-height: 1.8;
     color: var(--demon-white);
     margin: 0;
+}
+
+/* ========================================
+   LUCIFER-SPECIFIC CLASSES
+======================================== */
+.lucifer-card {
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.9), rgba(26, 26, 26, 0.9));
+    border: 1px solid var(--lucifer-dark-red);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.lucifer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--lucifer-shadow);
+    border-color: var(--lucifer-gold);
+}
+
+.lucifer-card:hover .card-glow {
+    opacity: 1;
+}
+
+.lucifer-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--lucifer-white);
+    margin: 1rem 0;
+    font-family: 'Cinzel', serif;
+}
+
+.lucifer-quote-large {
+    font-size: 1.4rem;
+    color: var(--lucifer-gold);
+    font-style: italic;
+    text-align: center;
+    margin: 1rem 0 2rem 0;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    text-shadow: 0 0 10px var(--lucifer-glow);
+}
+
+.lucifer-footer-quote {
+    font-size: 0.9rem;
+    color: var(--lucifer-gold);
+    font-style: italic;
+    margin-top: 0.5rem;
+    font-family: 'Dancing Script', cursive;
 }
 
 /* ========================================

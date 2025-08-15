@@ -1,6 +1,6 @@
 // ========================================
-// DEMON PORTFOLIO ANIMATIONS
-// Interactive effects and scroll animations
+// LUCIFER MORNINGSTAR PORTFOLIO ANIMATIONS
+// Divine effects and celestial scroll animations
 // ========================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 loadingScreen.style.opacity = '0';
                 setTimeout(() => {
                     loadingScreen.style.display = 'none';
+                    // Play a subtle "deal completed" sound effect
+                    createDealCompletedEffect();
                 }, 500);
-            }, 2000);
+            }, 2500); // Extended for Lucifer's dramatic entrance
         }
     }
     
@@ -35,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     },
                     color: {
-                        value: ["#ff4500", "#dc143c", "#8b0000", "#ff6600"]
+                        value: ["#ffd700", "#dc143c", "#8b0000", "#ff6600", "#cc0000"]
                     },
                     shape: {
                         type: "circle",
@@ -70,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     line_linked: {
                         enable: true,
                         distance: 150,
-                        color: "#ff4500",
+                        color: "#ffd700",
                         opacity: 0.3,
                         width: 1
                     },
@@ -137,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // SCROLL ANIMATIONS
     // ========================================
     function initScrollAnimations() {
-        const elements = document.querySelectorAll('.demon-card, .project-card, .cert-card, .timeline-item, .skill-category');
+        const elements = document.querySelectorAll('.demon-card, .lucifer-card, .project-card, .cert-card, .timeline-item, .skill-category');
         
         const observerOptions = {
             threshold: 0.1,
@@ -148,6 +150,8 @@ document.addEventListener('DOMContentLoaded', function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('fade-in', 'visible');
+                    // Add Lucifer's dramatic entrance with golden sparks
+                    createGoldenSparks(entry.target);
                 }
             });
         }, observerOptions);
@@ -162,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // SMOOTH SCROLLING FOR NAVIGATION
     // ========================================
     function initSmoothScrolling() {
-        const navLinks = document.querySelectorAll('.demon-nav-link');
+        const navLinks = document.querySelectorAll('.lucifer-nav-link');
         
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -172,6 +176,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (targetElement) {
                     const offsetTop = targetElement.offsetTop - 70;
+                    // Add a brief golden flash when navigating
+                    createNavigationFlash();
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -207,40 +213,43 @@ document.addEventListener('DOMContentLoaded', function() {
     // TYPING ANIMATION FOR TITLE
     // ========================================
     function initTypingAnimation() {
-        const title = document.querySelector('.demon-title');
+        const title = document.querySelector('.lucifer-title');
         if (title) {
             const text = title.textContent;
             title.textContent = '';
-            title.style.borderRight = '3px solid #ff4500';
+            title.style.borderRight = '3px solid #ffd700';
             
             let i = 0;
             const typeWriter = () => {
                 if (i < text.length) {
                     title.textContent += text.charAt(i);
                     i++;
-                    setTimeout(typeWriter, 100);
+                    setTimeout(typeWriter, 80); // Slightly faster, more confident
                 } else {
-                    // Remove cursor after typing
+                    // Remove cursor after typing with golden glow
                     setTimeout(() => {
                         title.style.borderRight = 'none';
+                        title.style.textShadow = '0 0 30px #ffd700';
+                        // Add Lucifer's signature laugh effect
+                        createLuciferLaughEffect();
                     }, 1000);
                 }
             };
             
             // Start typing after loading screen
-            setTimeout(typeWriter, 2500);
+            setTimeout(typeWriter, 3000);
         }
     }
     
     // ========================================
     // DEMON EYES FOLLOWING CURSOR
     // ========================================
-    function initEyeFollowCursor() {
-        const demonIcon = document.querySelector('.demon-icon');
-        if (demonIcon && demonIcon.classList.contains('fa-user-secret')) {
+    function initLuciferEyeFollow() {
+        const luciferIcon = document.querySelector('.lucifer-icon');
+        if (luciferIcon && luciferIcon.classList.contains('fa-crown')) {
             
             document.addEventListener('mousemove', (e) => {
-                const rect = demonIcon.getBoundingClientRect();
+                const rect = luciferIcon.getBoundingClientRect();
                 const iconCenterX = rect.left + rect.width / 2;
                 const iconCenterY = rect.top + rect.height / 2;
                 
@@ -249,8 +258,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
                 
-                // Subtle rotation following cursor
-                demonIcon.style.transform = `rotate(${angle * 0.05}deg)`;
+                // More pronounced movement for the Devil's crown
+                luciferIcon.style.transform = `rotate(${angle * 0.08}deg) scale(${1 + Math.abs(deltaX + deltaY) * 0.0001})`;
+                
+                // Add golden glow that intensifies with movement
+                const intensity = Math.min(Math.abs(deltaX + deltaY) * 0.01, 40);
+                luciferIcon.style.textShadow = `0 0 ${25 + intensity}px #ffd700`;
             });
         }
     }
@@ -258,32 +271,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================
     // GLITCH EFFECT ON HOVER
     // ========================================
-    function initGlitchEffect() {
-        const glitchElements = document.querySelectorAll('.demon-title, .section-title');
+    function initDivineGlowEffect() {
+        const glowElements = document.querySelectorAll('.lucifer-title, .section-title');
         
-        glitchElements.forEach(element => {
+        glowElements.forEach(element => {
             element.addEventListener('mouseenter', function() {
-                this.style.animation = 'glitch 0.5s ease-in-out';
+                this.style.animation = 'divineGlow 0.8s ease-in-out';
                 setTimeout(() => {
                     this.style.animation = '';
-                }, 500);
+                }, 800);
             });
         });
         
-        // Add glitch keyframes to CSS
+        // Add divine glow keyframes to CSS
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes glitch {
-                0%, 100% { transform: translate(0); }
-                10% { transform: translate(-2px, -2px); }
-                20% { transform: translate(2px, 2px); }
-                30% { transform: translate(-1px, 2px); }
-                40% { transform: translate(2px, -1px); }
-                50% { transform: translate(-2px, 1px); }
-                60% { transform: translate(1px, -2px); }
-                70% { transform: translate(-1px, -1px); }
-                80% { transform: translate(2px, 1px); }
-                90% { transform: translate(-2px, -2px); }
+            @keyframes divineGlow {
+                0% { transform: scale(1); text-shadow: 0 0 20px #ffd700; }
+                25% { transform: scale(1.02); text-shadow: 0 0 30px #ffd700, 0 0 40px #ff6600; }
+                50% { transform: scale(1.05); text-shadow: 0 0 40px #ffd700, 0 0 50px #ff6600, 0 0 60px #dc143c; }
+                75% { transform: scale(1.02); text-shadow: 0 0 30px #ffd700, 0 0 40px #ff6600; }
+                100% { transform: scale(1); text-shadow: 0 0 20px #ffd700; }
             }
         `;
         document.head.appendChild(style);
@@ -536,8 +544,8 @@ document.addEventListener('DOMContentLoaded', function() {
         initSmoothScrolling();
         initNavbarScrollEffect();
         initTypingAnimation();
-        initEyeFollowCursor();
-        initGlitchEffect();
+        initLuciferEyeFollow();
+        initDivineGlowEffect();
         initSkillBadgesAnimation();
         initProjectCardsEffect();
         initContactGlowEffect();
@@ -545,13 +553,237 @@ document.addEventListener('DOMContentLoaded', function() {
         initCursorTrail();
         createLightningEffect();
         
-        console.log('🔥 Demon Portfolio Animations Initialized 🔥');
+        console.log('👑 Lucifer Morningstar Portfolio Activated 👑');
+        console.log('"What is it you truly desire?"');
     }
     
     // ========================================
-    // BLOOD RAIN EFFECT (Easter Egg)
+    // LUCIFER-SPECIFIC EFFECTS
     // ========================================
-    function initBloodRain() {
+    
+    function createDealCompletedEffect() {
+        // Create golden sparks when loading completes
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+                createGoldenSpark(window.innerWidth / 2, window.innerHeight / 2);
+            }, i * 100);
+        }
+    }
+    
+    function createGoldenSparks(element) {
+        const rect = element.getBoundingClientRect();
+        for (let i = 0; i < 8; i++) {
+            createGoldenSpark(
+                rect.left + rect.width / 2, 
+                rect.top + rect.height / 2
+            );
+        }
+    }
+    
+    function createGoldenSpark(x, y) {
+        const spark = document.createElement('div');
+        spark.style.cssText = `
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #ffd700, #ff6600);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            left: ${x}px;
+            top: ${y}px;
+            animation: goldenSparkle 1.5s ease-out forwards;
+        `;
+        
+        document.body.appendChild(spark);
+        
+        setTimeout(() => {
+            spark.remove();
+        }, 1500);
+        
+        // Add sparkle animation if not exists
+        if (!document.querySelector('#golden-sparkle-style')) {
+            const sparkleStyle = document.createElement('style');
+            sparkleStyle.id = 'golden-sparkle-style';
+            sparkleStyle.textContent = `
+                @keyframes goldenSparkle {
+                    0% {
+                        transform: scale(0) rotate(0deg);
+                        opacity: 1;
+                    }
+                    50% {
+                        transform: scale(1.5) rotate(180deg);
+                        opacity: 0.8;
+                    }
+                    100% {
+                        transform: scale(0) rotate(360deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(sparkleStyle);
+        }
+    }
+    
+    function createNavigationFlash() {
+        const flash = document.createElement('div');
+        flash.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent);
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0;
+            animation: navigationFlash 0.3s ease-out;
+        `;
+        
+        document.body.appendChild(flash);
+        
+        setTimeout(() => {
+            flash.remove();
+        }, 300);
+        
+        // Add navigation flash animation
+        if (!document.querySelector('#navigation-flash-style')) {
+            const flashStyle = document.createElement('style');
+            flashStyle.id = 'navigation-flash-style';
+            flashStyle.textContent = `
+                @keyframes navigationFlash {
+                    0% { opacity: 0; }
+                    50% { opacity: 1; }
+                    100% { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(flashStyle);
+        }
+    }
+    
+    function createLuciferLaughEffect() {
+        // Create a subtle laugh ripple effect
+        const ripple = document.createElement('div');
+        ripple.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #ffd700;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9998;
+            animation: laughRipple 2s ease-out forwards;
+        `;
+        
+        document.body.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 2000);
+        
+        // Add laugh ripple animation
+        if (!document.querySelector('#laugh-ripple-style')) {
+            const rippleStyle = document.createElement('style');
+            rippleStyle.id = 'laugh-ripple-style';
+            rippleStyle.textContent = `
+                @keyframes laughRipple {
+                    0% {
+                        width: 10px;
+                        height: 10px;
+                        opacity: 1;
+                    }
+                    100% {
+                        width: 300px;
+                        height: 300px;
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(rippleStyle);
+        }
+    }
+    
+    // ========================================
+    // PIANO KEYS EASTER EGG (Lucifer plays piano)
+    // ========================================
+    function initPianoEasterEgg() {
+        const pianoSequence = ['KeyL', 'KeyU', 'KeyC', 'KeyI', 'KeyF', 'KeyE', 'KeyR'];
+        let sequenceIndex = 0;
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.code === pianoSequence[sequenceIndex]) {
+                sequenceIndex++;
+                if (sequenceIndex === pianoSequence.length) {
+                    startPianoEffect();
+                    sequenceIndex = 0;
+                }
+            } else {
+                sequenceIndex = 0;
+            }
+        });
+        
+        function startPianoEffect() {
+            // Create floating musical notes
+            console.log('🎹 "I don\'t play piano... I AM the piano." - Lucifer Morningstar');
+            
+            const notes = ['♪', '♫', '♬', '♩', '♭', '♯'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createMusicalNote(notes[Math.floor(Math.random() * notes.length)]);
+                }, i * 200);
+            }
+        }
+        
+        function createMusicalNote(note) {
+            const noteElement = document.createElement('div');
+            noteElement.textContent = note;
+            noteElement.style.cssText = `
+                position: fixed;
+                font-size: 2rem;
+                color: #ffd700;
+                text-shadow: 0 0 10px #ffd700;
+                pointer-events: none;
+                z-index: 9999;
+                left: ${Math.random() * window.innerWidth}px;
+                top: ${window.innerHeight}px;
+                animation: musicalFloat 4s ease-out forwards;
+            `;
+            
+            document.body.appendChild(noteElement);
+            
+            setTimeout(() => {
+                noteElement.remove();
+            }, 4000);
+            
+            // Add musical float animation
+            if (!document.querySelector('#musical-float-style')) {
+                const musicStyle = document.createElement('style');
+                musicStyle.id = 'musical-float-style';
+                musicStyle.textContent = `
+                    @keyframes musicalFloat {
+                        0% {
+                            transform: translateY(0) rotate(0deg);
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: translateY(-${window.innerHeight + 100}px) rotate(360deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(musicStyle);
+            }
+        }
+    }
+    
+    // ========================================
+    // GOLDEN RAIN EFFECT (Better than blood)
+    // ========================================
+    function initGoldenRain() {
         const konamiCode = [
             'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
             'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
@@ -563,7 +795,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.code === konamiCode[konamiIndex]) {
                 konamiIndex++;
                 if (konamiIndex === konamiCode.length) {
-                    startBloodRain();
+                    startGoldenRain();
                     konamiIndex = 0;
                 }
             } else {
@@ -571,26 +803,29 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        function startBloodRain() {
-            for (let i = 0; i < 100; i++) {
+        function startGoldenRain() {
+            console.log('👑 "Let there be light!" - Lucifer\'s Golden Rain 👑');
+            for (let i = 0; i < 150; i++) {
                 setTimeout(() => {
-                    createBloodDrop();
-                }, i * 50);
+                    createGoldenDrop();
+                }, i * 30);
             }
         }
         
-        function createBloodDrop() {
+        function createGoldenDrop() {
             const drop = document.createElement('div');
             drop.style.cssText = `
                 position: fixed;
-                width: 2px;
-                height: 20px;
-                background: linear-gradient(to bottom, #8b0000, #dc143c);
+                width: 3px;
+                height: 15px;
+                background: linear-gradient(to bottom, #ffd700, #ff6600);
+                border-radius: 2px;
                 top: -20px;
                 left: ${Math.random() * window.innerWidth}px;
                 pointer-events: none;
                 z-index: 9999;
-                animation: bloodFall 3s linear forwards;
+                animation: goldenFall 3s linear forwards;
+                box-shadow: 0 0 5px #ffd700;
             `;
             
             document.body.appendChild(drop);
@@ -600,33 +835,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 3000);
         }
         
-        // Add blood fall animation
-        const bloodStyle = document.createElement('style');
-        bloodStyle.textContent = `
-            @keyframes bloodFall {
+        // Add golden fall animation
+        const goldenStyle = document.createElement('style');
+        goldenStyle.textContent = `
+            @keyframes goldenFall {
                 to {
-                    transform: translateY(${window.innerHeight + 20}px);
+                    transform: translateY(${window.innerHeight + 20}px) rotate(10deg);
                     opacity: 0;
                 }
             }
         `;
-        document.head.appendChild(bloodStyle);
+        document.head.appendChild(goldenStyle);
     }
     
     // Start all animations
     initAllAnimations();
-    initBloodRain();
+    initPianoEasterEgg();
+    initGoldenRain();
     
     // ========================================
     // PERFORMANCE MONITORING
     // ========================================
     window.addEventListener('load', () => {
         const loadTime = performance.now();
-        console.log(`⚡ Demon Portfolio loaded in ${loadTime.toFixed(2)}ms ⚡`);
+        console.log(`👑 Lucifer's Portfolio manifested in ${loadTime.toFixed(2)}ms 👑`);
         
         // Add performance badge (optional)
         if (loadTime < 3000) {
-            console.log('🚀 Blazing fast load time! The demons approve! 🚀');
+            console.log('⚡ "Impressive. Even I\'m surprised by this speed." - Lucifer ⚡');
         }
     });
     
@@ -634,11 +870,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // ERROR HANDLING
     // ========================================
     window.addEventListener('error', (e) => {
-        console.error('👹 Demon Portfolio Error:', e.error);
+        console.error('👑 "Well, that\'s embarrassing..." - Lucifer Portfolio Error:', e.error);
     });
     
     window.addEventListener('unhandledrejection', (e) => {
-        console.error('👹 Unhandled Promise Rejection:', e.reason);
+        console.error('👑 "I hate it when promises are broken..." - Unhandled Promise:', e.reason);
     });
     
 });
